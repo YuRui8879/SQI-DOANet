@@ -161,6 +161,8 @@ def load_case_from_mat(mat_path: Path):
     eeg2 = _to_1d(_unwrap(eeg2))
     bis = _to_1d(_unwrap(bis))
     sqi = _to_1d(_unwrap(sqi))
+    eeg1 = np.where(np.isnan(eeg1), 0, eeg1)
+    eeg2 = np.where(np.isnan(eeg2), 0, eeg2)
     return eeg1, eeg2, bis, sqi
 
 

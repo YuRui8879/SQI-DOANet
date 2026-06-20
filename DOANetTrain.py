@@ -364,6 +364,8 @@ class CrossValSampler:
                 raise FileNotFoundError("Label mat not found: {}".format(labelpath))
 
             eeg1, eeg2, bis, sqi = self.load_case_from_mat(labelpath)
+            eeg1 = np.where(np.isnan(np.array(eeg1)), 0, eeg1)
+            eeg2 = np.where(np.isnan(np.array(eeg2)), 0, eeg2)
             bis = np.where(np.isnan(np.array(bis)), 0, bis)
 
             self.log.log("Bis length: {}".format(len(bis)))
